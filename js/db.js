@@ -124,7 +124,7 @@
 		if(!this.ready)
 			this.promises.push(function() {that.save(callback);});
 		else
-			$.post("php/save_object.php", {type: this.type, object: JSON.stringify(this)}).done(function(result) {
+			$.post("php/save_object.php", {object: JSON.stringify(this)}).done(function(result) {
 				callback(JSON.parse(result));
 			});
 	};
