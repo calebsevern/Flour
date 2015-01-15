@@ -15,6 +15,8 @@
 	*	
 	*/	
 	
+	var path = "http://" + window.location.host + "/projects/nlist/";
+	
 	var Query = function(object) {
 		this.object = object;
 		this.param = null;
@@ -31,8 +33,16 @@
 	
 		var data = {object: this.object, param: this.param, val: this.val};
 		
-		$.post( "php/db_functions.php", data).done(function(result) {
+		$.post(path + "php/db_functions.php", data).done(function(result) {
 			callback(JSON.parse(result));
+		});
+	};
+	
+	Query.prototype.get = function(id, callback) {
+		var data = {object: this.object, id: id};
+		var type = this.object;
+		$.post(path + "php/get_by_id.php", data).done(function(result) {
+			var a = new Obj(type, id, callback, JSON.parse(result)[0]);
 		});
 	};
 	
@@ -40,7 +50,7 @@
 	
 	Query.prototype.create = function(callback) {
 		var data = {object: this.object};
-		$.post("php/create.php", data).done(function(result) {
+		$.post(path + "php/create.php", data).done(function(result) {
 			callback(new Obj((JSON.parse(result).type), JSON.parse(result).id));
 		});
 	};
@@ -72,7 +82,7 @@
 	
 	User.prototype.init = function(callback) {
 		var that = this;
-		$.post("php/db_functions.php", {object: "CurrentUser"}).done(function(result) {
+		$.post(path + "php/db_functions.php", {object: "CurrentUser"}).done(function(result) {
 			callback(that, JSON.parse(result)[0]);
 		});
 	};
@@ -99,12 +109,50 @@
 			
 			current.promises = [];
 		});
-	};
+	};	
 	
+	
+	
+	/*
+	*	For existing objects (get)
+	*/
+	
+	var Obj = function(type, id, callback, existing) {
+		this.type = type;
+		this.ready = false;
+		this.promises = [];
+		this.id = (id) ? id : null;
+		this.init(function(current, attributes) {
+		
+			for(var i=0; i<attributes.length; i++)
+				current[attributes[i]] = null;
+			
+			
+			//Populate existing fields
+			
+			if(existing)
+				for (var property in existing)
+					if(current.hasOwnProperty(property))
+						current[property] = existing[property];
+			
+			
+			//Object isn't ready until the attributes have loaded.
+			
+			current.ready = true;
+			
+			for(var i=0; i<current.promises.length; i++)
+				current.promises[i]();
+			
+			current.promises = [];
+			
+			if(callback)
+				callback(current);
+		});
+	};	
 	
 	Obj.prototype.init = function(callback) {
 		var that = this;
-		$.post("php/initialize_object.php", {type: this.type}).done(function(result) {
+		$.post(path + "php/initialize_object.php", {type: this.type}).done(function(result) {
 			callback(that, JSON.parse(result));
 		});
 	};
@@ -124,7 +172,7 @@
 		if(!this.ready)
 			this.promises.push(function() {that.save(callback);});
 		else
-			$.post("php/save_object.php", {object: JSON.stringify(this)}).done(function(result) {
+			$.post(path + "php/save_object.php", {object: JSON.stringify(this)}).done(function(result) {
 				callback(JSON.parse(result));
 			});
 	};
