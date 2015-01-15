@@ -21,19 +21,25 @@
 		this.object = object;
 		this.param = null;
 		this.val = null;
+		
+		this.keys = [];
+		this.values = [];
 	};
 	
 	
 	Query.prototype.equalTo = function(param, val) {
 		this.param = param;
 		this.val = val;
+		
+		this.keys.push(param);
+		this.values.push(val);
 	};
 
 	Query.prototype.find = function(callback) {
 	
-		var data = {object: this.object, param: this.param, val: this.val};
+		var data = {object: this.object, param: this.param, val: this.val, keys: this.keys, values: this.values};
 		
-		$.post(path + "php/db_functions.php", data).done(function(result) {
+		$.post(path + "php/find_object.php", data).done(function(result) {
 			callback(JSON.parse(result));
 		});
 	};
