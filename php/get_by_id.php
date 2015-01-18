@@ -33,14 +33,3 @@
 		exit();
 	}
 	
-	
-	
-		
-	
-	/*while($sth->fetch()) {
-	*	echo $username;
-	}*/
-	
-	//echo "done";
-	
-	

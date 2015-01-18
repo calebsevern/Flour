@@ -20,18 +20,37 @@
 	$query_string = rtrim(trim($query_string), "AND");
 	
 	$pdo = new PDO("mysql:host=$configs->host; dbname=$db_name; charset=utf8", $configs['username'], $configs['password']);	
-	$stmt = $pdo->prepare("SELECT * FROM $db_name.$object WHERE $query_string");
-	$stmt->execute($values_array);
-	$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	
-	$matches = array();
+	if(count($keys) > 0) {
 	
-	for($i=0; $i<count($rows); $i++)
-		array_push($matches, $rows[$i]);
+		$stmt = $pdo->prepare("SELECT * FROM $db_name.$object WHERE $query_string");
+		$stmt->execute($values_array);
+		$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		
-	echo json_encode($matches);
+		$matches = array();
+		
+		for($i=0; $i<count($rows); $i++)
+			array_push($matches, $rows[$i]);
+			
+		echo json_encode($matches);
+
+	} else {
+		
+		$stmt = $pdo->prepare("SELECT * FROM $db_name.$object");
+		$stmt->execute(array());
+		$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		
+		$matches = array();
+		
+		for($i=0; $i<count($rows); $i++)
+			array_push($matches, $rows[$i]);
+			
+		echo json_encode($matches);
+		
+	}
 	
 	exit();
+
 	
 	
 	
