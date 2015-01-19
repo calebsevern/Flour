@@ -3,6 +3,13 @@ Flour lets you use client-side JS to manage SQL databases.
 
 If you don't have a SQL database, tweak setup.php as you see fit and run it to create one.
 
+#####Plans
+Ajax frontend for viewing/editing data (spreadsheet format is fine)
+User object + permissions
+Error handling
+Object (table) creation
+
+
 ### Queries
 ```javascript
 var query = new Query("Shirt");
