@@ -42,6 +42,14 @@ query.create(function(recipe) {
   //New object available - all it's got is a unique ID.
 });
 ```
+-
+
+### Deleting objects
+```javascript
+object.destroy(function(message) {
+  //All done.
+});
+```
 
 -
 ### Updating objects
