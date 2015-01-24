@@ -15,7 +15,15 @@
 	*	
 	*/	
 	
-	var path = "http://" + window.location.host + "/projects/nlist/";
+	var path = (function(scripts) {
+		var scripts = document.getElementsByTagName('script'),
+			script = scripts[scripts.length - 1];
+
+		if (script.getAttribute.length !== undefined)
+			return script.src.toString().split("js/db.js")[0];
+
+		return script.getAttribute('src', -1).split("js/db.js")[0];
+	}());
 	
 	var Query = function(object) {
 		this.object = object;
@@ -183,6 +191,17 @@
 			});
 	};
 	
+	
+	Obj.prototype.destroy = function(callback) {
+		var that = this;
+		
+		if(!this.ready)
+			this.promises.push(function() {that.destroy(callback);});
+		else
+			$.post(path + "php/delete_object.php", {object: that.type, id: that.id}).done(function(result) {
+				callback(result);
+			});
+	};
 	
 	
 	
