@@ -53,6 +53,7 @@ function getObjectsByClass(class_name) {
 	var query = new Query(class_name);
 	query.find(function(objects) {
 		
+		$(".class-attributes").html("");
 		$(".data-table > tbody").html("");
 		
 		if(objects.length > 0) {
