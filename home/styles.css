@@ -60,35 +60,103 @@ html, body {
 		left: 0px;
 		width: 100%;
 		height: 48px;
-		background: red;
-	}
-
-
-	.data-table-wrapper > .data-table {
-		position: relative;
-		left: 0px;
-		top: 0px;
-		background: #ddd;
+		background: #f9fcff;
+		border-bottom: 1px solid #ebebeb;
 	}
 	
-		th, td {
+		.utility-header > .action-button {
+			font-size: 14px;
+			margin: 0 10px 0 0;
+			line-height: 18px;
+			padding: 5px 8px;
+			text-align: center;
+			vertical-align: top;
+			border: 1px solid #5298fc;
+			color: #5298fc;
+			transition: all .25s ease;
 			position: relative;
-			text-overflow: ellipsis;
-			height: 16px;
-			line-height: 16px;
-			padding: 4px;
-			border-right: 1px solid silver;
-			border-left: 0;
-			border-top: 0;
-			border-bottom: 0;
-			background: #f4f8fc;
-			color: #5a6b77;
-			font-weight: 500;
-			font-size: 13px;
-			text-shadow: rgba(255,255,255,0.7) 0 1px 0;
-			text-align: left;
+			left: 10px;
+			top: 10px;
 		}
 		
-		.data-table > thead > th:hover {
-			
+	.data-table-wrapper > .utility-footer {
+		position: absolute;
+		bottom: 0px;
+		left: 0px;
+		width: 100%;
+		height: 48px;
+		background: #f9fcff;
+		border-bottom: 1px solid #ebebeb;
+	}
+	
+		.utility-footer > .server-response {
+			font-size: 14px;
+			margin: 0 10px 0 0;
+			line-height: 18px;
+			padding: 5px 8px;
+			text-align: center;
+			vertical-align: top;
+			color: #5298fc;
+			transition: all .25s ease;
+			position: relative;
+			left: 10px;
+			top: 10px;
 		}
+
+	.data-table-wrapper > .table-wrapper {
+		position: absolute;
+		left: 0px;
+		width: 100%;
+		top: 48px;
+		height: calc(100% - 96px);
+		overflow: scroll;
+	}
+		
+		.table-wrapper > .data-table {
+			position: relative;
+			left: 0px;
+			top: 0px;
+			background: #ddd;
+			max-height: calc(100% - 96px);
+		}
+	
+			th, td {
+				position: relative;
+				text-overflow: ellipsis;
+				height: 16px;
+				line-height: 16px;
+				padding: 4px;
+				border-right: 1px solid silver;
+				border-left: 0;
+				border-top: 0;
+				border-bottom: 0;
+				background: #f4f8fc;
+				color: #444;
+				font-weight: 500;
+				font-size: 13px;
+				text-shadow: rgba(255,255,255,0.7) 0 1px 0;
+				text-align: left;
+			}
+			
+			.protected-field {
+				color: rgba(0, 0, 0, .5);
+			}
+			
+			.active {
+				background: white;
+				border: 1px solid #17a4e5;
+				box-shadow: rgba(23,164,229,0.7) 0 0 6px;
+				z-index: 3;
+			}
+			
+			.editable {
+				background: #E4F1FE;
+			}
+			
+			.data-table > thead > th:hover {
+				
+			}
+		
+		
+		
+		

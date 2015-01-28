@@ -9,16 +9,26 @@
 			
 	<div class="data-table-wrapper">
 		<div class="utility-header">
+			<button class="action-button create-object">+ Row</button>
+			<button class="action-button destroy-object">- Row</button>
 		</div>
 	
-		<table class="data-table">
-			<thead>
-				<tr class="class-attributes">
-				</tr>
-			</thead>
-			<tbody>
-			</tbody>
-		</table>
+		<div class="table-wrapper">
+			<table class="data-table">
+				<thead>
+					<tr class="class-attributes">
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+		
+		<div class="utility-footer">
+			<div class="server-response">
+				Waiting for instructions...
+			</div>
+		</div>
 	</div>
 	
 	<div class="nav">
