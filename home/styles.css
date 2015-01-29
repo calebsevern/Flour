@@ -1,40 +1,91 @@
-
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
 
 html, body {
 	margin: 0px;
 	padding: 0px;
+	font-family: 'Open Sans', sans-serif;
 }
 
 
 .top-nav {
-	position: absolute;
+	float: left;
+	position: relative;
 	left: 0px;
 	width: 100%;
 	height: 48px;
 	background: #5a6b77;
 }
 
+	.top-nav > .left-menu {
+		position: absolute;
+		left: 0px;
+		width: 240px;
+		background: rgba(0,0,0,0.15);
+		height: 100%;
+	}
+	
+	.top-nav > .center-menu {
+		position: absolute;
+		left: 0px;
+		width: 100%;
+		text-align: center;
+	}
+	
+		.center-menu > span {
+			position: relative;
+			height: 27px;
+			top: 14px;
+			padding: 10px;
+		}
+	
+			.center-menu > span > a {
+				position: relative;
+				color: white;
+				text-decoration: none;
+			}
 
 .nav {
 	height: calc(100% - 48px);
 	width: 180px;
 	top: 48px;
-	background: #34434d;
+	background: #6d808e;
 	overflow-y: auto;
 	overflow-x: hidden;
 	position: absolute;
 	color: white;
 }
 
-	.nav > .classes {
+	.nav > .tab {
+		position: relative;
+		float: left;
+		width: 100%;
+		font-size: 16px;
+		/*background: #F89406;*/
+		padding: 9px;
+	}
+	
+		.nav > .tab:hover {
+			cursor: pointer;
+			background: #F9690E;
+		}
+
+	.nav > .classes-list {
+		background: #34434d;
+		display: inline-block;
+		position: relative;
+		width: 100%;
+	}
+
+	.classes-list > .classes {
 		position: relative;
 		width: 100%;
 	}
 	
-		.nav > .classes > .class-title {
+		.classes > .class-title {
 			position: relative;
 			width: 100%;
 			padding: 10px;
+			font-size: 14px;
 		}
 		
 		.class-title:hover {

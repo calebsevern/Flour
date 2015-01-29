@@ -14,7 +14,15 @@ var protected_fields = ["id", "password"];
 		});
 	}
 
+	
+	
+/*
+*	(Hopefully) makes content safe to display
+*/
 
+	function sanitizeString(html) {
+		return html.replace(/<script(?=(\s|>))/i, '<script type="text/xml" ');
+	}
 
 /*
 *	Populates the nav bar with all classes
@@ -25,7 +33,7 @@ function buildNavigationBar() {
 		if(classes.length > 0) {
 			getObjectsByClass(classes[0]);
 			for(var i=0; i<classes.length; i++)
-				$(".nav > .classes").append("<div class='class-title'>" + classes[i] + "</div>");
+				$(".classes-list > .classes").append("<div class='class-title'>" + classes[i] + "</div>");
 		} else {
 			//No classes exist yet.
 		}
@@ -53,10 +61,11 @@ function addObjectToTable(obj) {
 	row += "<td><input type='checkbox'></td>";
 	for(prop in obj) {
 		
+		var safe_value = obj[prop];
 		if($.inArray(prop, protected_fields) > -1)
-			row += "<td class='protected-field'>" + obj[prop] + "</td>";
+			row += "<td class='protected-field'>" + safe_value + "</td>";
 		else
-			row += "<td data-property='" + prop + "'>" + obj[prop] + "</td>";
+			row += "<td data-property='" + prop + "'>" + safe_value + "</td>";
 	}
 	row += "</tr>";
 	$(".data-table > tbody").append(row);
