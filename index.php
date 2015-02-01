@@ -32,13 +32,23 @@
 	</div>
 	
 	<div class="nav">
-		<div class="classes">
-			
+		<div class="tab">Classes</div>
+		<div class="classes-list">
+			<div class="classes"></div>
 		</div>
 	</div>
 	
 	<div class="top-nav">
-	
+		<div class="left-menu">
+		</div>
+		<div class="center-menu">
+			<span>
+				<a href="index.php">Data</a>
+			</span>
+			<span>
+				<a href="settings.php">Settings</a>
+			</span>
+		</div>
 	</div>
 	
 </html>

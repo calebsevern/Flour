@@ -3,7 +3,41 @@
 	*	JavaScript API for database functions
 	*/
 
+	var path = (function(scripts) {
+		var scripts = document.getElementsByTagName('script'),
+			script = scripts[scripts.length - 1];
 
+		if (script.getAttribute.length !== undefined)
+			return script.src.toString().split("js/db.js")[0];
+
+		return script.getAttribute('src', -1).split("js/db.js")[0];
+	}());
+	
+	
+	
+	var Flour = {
+		secret: "",
+		verified: false
+	};
+	
+	Flour.initialize = function(secret) {
+		Flour.secret = secret;
+		
+		$.post(path + "php/verify_keys.php", {key: secret}).done(function(result) {
+			Flour.verified = (result == 1);
+		});
+	};
+	
+	//Flour.initialize("ajso4jf0sda98fjl3ksfjsldasdfja0s8d");
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/*
 	*	Database handler constructor
 	*
@@ -14,16 +48,6 @@
 	*	});
 	*	
 	*/	
-	
-	var path = (function(scripts) {
-		var scripts = document.getElementsByTagName('script'),
-			script = scripts[scripts.length - 1];
-
-		if (script.getAttribute.length !== undefined)
-			return script.src.toString().split("js/db.js")[0];
-
-		return script.getAttribute('src', -1).split("js/db.js")[0];
-	}());
 	
 	var Query = function(object) {
 		this.object = object;

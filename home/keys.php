@@ -5,6 +5,7 @@
 	$db = $configs['db'];
 	$username = $configs['username'];
 	$password = $configs['password'];
+	$secret = $configs['secret'];
 	
 ?>
 
@@ -14,6 +15,9 @@
 		</div>
 		<div class="row">
 			MySQL Username <input type="text" id="mysql_username" value="<?php echo $username;?>">
+		</div>
+		<div class="row">
+			API Key <input type="text" id="api_key" value="<?php echo $secret;?>">
 		</div>
 		<!--<div class="row">
 			MySQL Password <input type="password" id="mysql_password" value="">
