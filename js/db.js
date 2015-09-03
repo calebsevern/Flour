@@ -27,6 +27,26 @@
 			Flour.verified = (result == 1);
 		});
 	};
+  
+  Flour.addClass = function(name, callback) {
+		$.post(path + "php/addClass.php", {name: name}).done(function(result) {
+			callback(result);
+		});
+	};
+  
+  
+  Flour.destroyClass = function(name, callback) {
+		$.post(path + "php/destroyClass.php", {name: name}).done(function(result) {
+			callback(result);
+		});
+	};
+  
+  
+  Flour.getClassInfo = function(name, callback) {
+    $.post(path + "php/getClassInfo.php", {name: name}).done(function(result) {
+			callback(result);
+		});
+  };
 	
 	//Flour.initialize("ajso4jf0sda98fjl3ksfjsldasdfja0s8d");
 	

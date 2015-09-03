@@ -1,9 +1,14 @@
 <?php
 
+	/*
+	*	Adds a new class as a SQL table
+	*/
+	
 	$configs = include('../conf.php');
 	$db = $configs['db'];
 	
-	$object = $_POST['object'];
+	$type = $_POST['type'];
+  $class_name = $_POST['name'];
 	
 	//Initialize the DB
 
@@ -12,12 +17,14 @@
 		die("Connection failed: " . $link->connect_error);
 		
 		
-	$t = mt_rand();
-	$sql = "INSERT INTO $db.$object (id) ";
-	$sql .= "VALUES ('" . $t . "');";
+	//Create the table
+  
+	$sql = "DROP TABLE $db.$class_name;";
 	
-	$c = mysqli_query($link, $sql);
-	if($c)
-		echo "{\"type\":\"$object\", \"id\":\"$t\"}";
-
+	$a = mysqli_query($link, $sql);
+	echo "Removed $class_name.";
+		
+		
+	
+	
 	

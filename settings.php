@@ -30,9 +30,9 @@
 			<span>
 				<a href="index.php">Data</a>
 			</span>
-			<span>
+			<!--<span>
 				<a href="settings.php">Settings</a>
-			</span>
+			</span>-->
 		</div>
 	</div>
 	

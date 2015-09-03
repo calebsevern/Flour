@@ -4,9 +4,10 @@
 
 	return array(
 		'host' => 'localhost',
-		'db' => 'econ',
+		'db' => 'flour',
+		'secret' => '',
 		'username' => 'root',
-		'password' => 'password',
+		'password' => '',
 		'email' => 'yourname@example.com',
 		'full_name' => 'Deacon Pollip'
 	);

@@ -6,6 +6,10 @@
 	$username = $configs['username'];
 	$password = $configs['password'];
 	$secret = $configs['secret'];
+  
+  $db = "";
+  $username = "";
+  $secret = "";
 	
 ?>
 
