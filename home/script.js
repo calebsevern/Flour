@@ -75,10 +75,12 @@ function addObjectToTable(obj) {
   for(prop in obj) {
     
     var safe_value = obj[prop];
-    if($.inArray(prop, protected_fields) > -1)
-      row += "<td class='protected-field'>" + safe_value + "</td>";
-    else
-      row += "<td data-property='" + prop + "'>" + safe_value + "</td>";
+    if($.inArray(prop, protected_fields) > -1) {
+      row += "<td class='protected-field'><span class='content-cell'>" + safe_value + "</span></td>";
+    }
+    else {
+      row += "<td data-property='" + prop + "'><span class='content-cell'>" + safe_value + "</span></td>";
+    }
   }
   row += "</tr>";
   $(".data-table > tbody").append(row);
@@ -142,7 +144,10 @@ function getObjectsByClass(class_name) {
 
 
 
-
+function showCellOptions(cell) {
+  var a = $("<div>").addClass("options").text('pqwerwer');
+  $(cell).append(a);
+}
 
 
 /*
@@ -157,33 +162,40 @@ function getObjectsByClass(class_name) {
     $(".data-table > tbody > tr > td").removeClass("active");
     $(".data-table > tbody > tr > td").removeClass("editable");
     
-    if(!$(this).hasClass("protected-field"))
+    if(!$(this).hasClass("protected-field")) {
       $(this).addClass("active");
+    }
   });
   
   $(document).on('click', '.active', function() {
     $(".data-table > tbody > tr > td").prop("contenteditable", false);
+    
+    //if($(this).children().length < 2) {
+    //  showCellOptions(this);
+    //}
+    
     $(this).prop("contenteditable", true);
     $(this).addClass("editable");
     
   });
   
-  $(document).on('blur', '.editable', function() {
+  /*$(document).on('blur', '.editable', function() {
     $(this).removeClass("active").removeClass("editable");
     var row = $(this).closest("tr");
     var query = new Query(active_class);
     query.get($(this).closest("tr").data("object-id").toString(), function(obj) {
       
       $(row).find("td").each(function() {
-        if($.inArray($(this).data("property"), protected_fields) == -1 && $(this).data("property"))
+        if($.inArray($(this).data("property"), protected_fields) == -1 && $(this).data("property")) {
           obj.set($(this).data("property"), $(this).text());
+        }
       });
       
       obj.save(function(result) {
         $(".server-response").html("Successfully updated " + result.type + " object with id " + result.id);
       });
     });
-  });
+  });*/
   
   
   
