@@ -1,0 +1,33 @@
+extends layouts/internal-nav.jade
+
+block content
+  body.project-page(ng-app="project" ng-controller="NavController as nc")
+    div(ng-controller="DataController as dc")
+    
+      div.top-nav
+        a.home(href="/projects") [#]
+        a.project-name(href="#" ng-click="nc.generalView()") #{project}
+          text(ng-bind="' / ' + DataFactory.data.currentType")
+        input.search-bar(ng-model="searchQuery" type="text" placeholder="Type to search...")
+    
+      div.table-wrapper(ng-show="DataFactory.data.view === 'data'")
+        div.data-table
+          div.table-header.data-row
+            div.cell(ng-repeat="value in DataFactory.data.attributes track by $index" ng-bind="value")
+          div.data-row(ng-repeat="row in DataFactory.data.rows track by $index")
+            div.cell(ng-repeat="value in row track by $index | filter: searchQuery" ng-bind="value") 
+            
+      div.side-nav(ng-show="DataFactory.data.view === 'data'")
+        div.heading Actions
+        div.action(ng-click="dc.addRow()") + Row
+        div.action(ng-click="dc.removeRow()") - Row
+        div.action(ng-click="dc.addColumn()") + Column
+        div.action(ng-click="dc.deleteType()" ng-bind="'Delete \"' + DataFactory.data.currentType + '\"'")
+      div.side-nav(ng-show="DataFactory.data.view === 'general'")
+        div.heading Objects
+        div.action(ng-repeat="type in DataFactory.data.types" ng-bind="type" ng-click="nc.dataView(type)")
+
+    script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js")
+    script(src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js")
+    script(src="/javascripts/db.js")
+    script(src="/javascripts/project-engine.js")

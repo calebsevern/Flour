@@ -1,0 +1,6 @@
+extends layout
+
+block content
+  each project in projects
+    a(href="projects/#{project}") #{project}
+    br

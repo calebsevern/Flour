@@ -1,0 +1,106 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+html, body {
+  margin: 0;
+  padding: 0;
+  font: 14px Helvetica, Arial, sans-serif; }
+
+a {
+  color: inherit;
+  text-decoration: none; }
+
+.internal .top-nav {
+  font-family: 'Montserrat';
+  background: #D64541;
+  border-bottom: 3px solid #E26A6A;
+  color: white;
+  padding: 10px 14px;
+  font-weight: 500;
+  text-transform: uppercase; }
+  .internal .top-nav .home {
+    font-size: 24px; }
+  .internal .top-nav .project-name {
+    font-size: 18px;
+    position: relative;
+    left: 14px;
+    top: -1px; }
+  .internal .top-nav .search-bar {
+    position: relative;
+    padding: 6px 10px;
+    float: right;
+    top: -1px; }
+
+.project-page {
+  background: #FAFAFA; }
+  .project-page a {
+    color: inherit;
+    text-decoration: none; }
+
+.side-nav {
+  font-family: 'Montserrat', sans-serif;
+  height: calc(100% - 48px);
+  width: 180px;
+  top: 52px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: absolute;
+  color: white;
+  background: #3D3D3D; }
+  .side-nav .action {
+    position: relative;
+    width: calc(100% - 24px);
+    padding: 10px;
+    font-size: 14px; }
+    .side-nav .action:hover {
+      background: #3D2B2B;
+      cursor: pointer; }
+  .side-nav .heading {
+    position: relative;
+    width: calc(100% - 24px);
+    padding: 10px;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: #898989;
+    top: 6px; }
+
+.table-wrapper {
+  position: absolute;
+  /*top: 48px;*/
+  left: 180px;
+  width: calc(100% - 180px);
+  height: calc(100% - 97px);
+  overflow: scroll;
+  background: #fafafa; }
+  .table-wrapper .data-table {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    max-height: calc(100% - 96px);
+    border-collapse: collapse;
+    font-weight: 400;
+    display: table; }
+  .table-wrapper .data-row {
+    display: table-row; }
+    .table-wrapper .data-row:nth-child(even) {
+      background: #F1F1F1; }
+    .table-wrapper .data-row:nth-child(odd) {
+      background: #FFF; }
+  .table-wrapper .cell {
+    display: table-cell;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 6px;
+    color: #222;
+    font-size: 13px;
+    text-align: left;
+    border-right: 1px solid #E9E9E9;
+    border-bottom: 1px solid #E9E9E9;
+    min-width: 100px; }
+  .table-wrapper .active {
+    border: 1px solid #88B785;
+    z-index: 3;
+    background: #C8F7C5;
+    height: 100%;
+    margin-bottom: -10px;
+    display: inline-block;
+    width: calc(100% - 9px);
+    padding: 8px 4px 6px 5px; }
