@@ -1,18 +1,25 @@
 # Flour
 Flour lets you use client-side JS to manage SQL databases. 
 
+![Flour project view](https://severn.me/res/flour.png)
+
 If you don't have a SQL database, tweak setup.php as you see fit and run it to create one.
 
 ####Plans
 
-Ajax frontend for viewing/editing data - spreadsheet format is fine
+**[✓] ~~Port: Frontend to AngularJS < 2~~**
 
+**[✓] ~~Port: DB to SQLite~~**
 
-User object + permissions
+**[ ] Port: Backend to Node.js**
 
-Error handling
+[ ] User object + permissions
 
-Object (table) creation
+[ ] Better error handling
+
+[ ] Project (database) creation
+
+[ ] Object (table) creation
 
 
 
