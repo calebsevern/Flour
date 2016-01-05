@@ -1,9 +1,9 @@
 # Flour
-Flour lets you use client-side JS to manage SQL databases. 
+Flour is a database and backend visualization tool.
 
-![Flour project view](https://severn.me/res/flour.png)
+![Flour project data view](https://severn.me/res/flour.png)
 
-If you don't have a SQL database, tweak setup.php as you see fit and run it to create one.
+---
 
 ####Plans
 
@@ -11,7 +11,9 @@ If you don't have a SQL database, tweak setup.php as you see fit and run it to c
 
 **[✓] ~~Port: DB to SQLite~~**
 
-**[ ] Port: Backend to Node.js**
+**[✓] Port: Backend to Node.js**
+
+[ ] Move this section to issues or JIRA
 
 [ ] User object + permissions
 
@@ -21,7 +23,9 @@ If you don't have a SQL database, tweak setup.php as you see fit and run it to c
 
 [ ] Object (table) creation
 
+---
 
+[The provided JS wrapper](https://github.com/calebsevern/Flour/blob/master/public/javascripts/db.js) lets you use client-side JS to manage a Flour backend:
 
 ### Queries
 ```javascript
